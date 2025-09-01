@@ -1,0 +1,5 @@
+# Ignore Google Cloud credential files
+*.json
+
+# Ignore large diagnostic files
+*.zip
