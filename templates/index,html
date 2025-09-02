@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF--8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intelligent Screenshot API</title>
     <style>
         body { font-family: sans-serif; line-height: 1.6; padding: 2em; max-width: 800px; margin: auto; background-color: #f4f4f4; }
         h1, h2 { color: #333; }
         .container { background-color: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        em { color: #777; }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: .5rem; }
+        input[type="email"] { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        button { background-color: #007bff; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .api-key-box { background-color: #e9ecef; padding: 1rem; border-radius: 4px; margin-top: 1rem; white-space: pre-wrap; word-wrap: break-word; }
     </style>
 </head>
 <body>
@@ -19,15 +24,66 @@
 
         <hr>
 
-        <h2>Your Account</h2>
-        <p><em>(User sign-up and API key management will go here.)</em></p>
-
-        <h2>API Documentation</h2>
-        <p><em>(Our simple and clear API documentation will go here.)</em></p>
+        <h2>Create Your Account</h2>
+        <p>Sign up with your email to get your free API key.</p>
         
-        <h2>Billing</h2>
-        <p><em>(Subscription management will go here.)</em></p>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit">Get API Key</button>
+        </form>
+
+        <div id="result-box" style="display: none;">
+            <h3>Your New API Key:</h3>
+            <div id="api-key-display" class="api-key-box"></div>
+        </div>
+        
     </div>
+
+    <script>
+        // This script will handle the form submission
+        const form = document.querySelector('form');
+        const resultBox = document.querySelector('#result-box');
+        const apiKeyDisplay = document.querySelector('#api-key-display');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Stop the default browser redirect
+
+            const formData = new FormData(form);
+            const email = formData.get('email');
+
+            try {
+                const response = await fetch('/create_user', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                
+                if (data.api_key) {
+                    apiKeyDisplay.textContent = data.api_key;
+                    resultBox.style.display = 'block';
+                    form.style.display = 'none'; // Hide the form after success
+                } else {
+                    apiKeyDisplay.textContent = 'Error: ' + (data.detail || 'Could not create user.');
+                    resultBox.style.display = 'block';
+                }
+
+            } catch (error) {
+                apiKeyDisplay.textContent = 'An error occurred. Please try again.';
+                resultBox.style.display = 'block';
+            }
+        });
+    </script>
 
 </body>
 </html>
