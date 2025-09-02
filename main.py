@@ -5,8 +5,8 @@ from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
 # Import our database and model components
-from . import models, crud
-from .database import SessionLocal, engine
+import models, crud
+from database import SessionLocal, engine
 
 # Create the database tables
 models.Base.metadata.create_all(bind=engine)

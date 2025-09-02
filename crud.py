@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from . import models
+import models
 
 def get_user_by_api_key(db: Session, api_key: str):
     """
