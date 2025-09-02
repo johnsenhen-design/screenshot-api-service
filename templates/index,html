@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF--8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Screenshot API</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 2em; max-width: 800px; margin: auto; background-color: #f4f4f4; }
+        h1, h2 { color: #333; }
+        .container { background-color: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        em { color: #777; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to the Intelligent Screenshot API</h1>
+        <p>The developer-friendly API for perfect web screenshots. Our intelligent API handles cookie banners, lazy loading, and pop-ups so you don't have to.</p>
+
+        <hr>
+
+        <h2>Your Account</h2>
+        <p><em>(User sign-up and API key management will go here.)</em></p>
+
+        <h2>API Documentation</h2>
+        <p><em>(Our simple and clear API documentation will go here.)</em></p>
+        
+        <h2>Billing</h2>
+        <p><em>(Subscription management will go here.)</em></p>
+    </div>
+
+</body>
+</html>
