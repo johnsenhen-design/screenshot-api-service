@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation - Intelligent Screenshot</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 2em; max-width: 800px; margin: auto; background-color: #f4f4f4; }
+        h1, h2, h3 { color: #333; }
+        .container { background-color: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        code { background-color: #eee; padding: 2px 5px; border-radius: 4px; white-space: pre-wrap; word-wrap: break-word;}
+        .endpoint { border-left: 4px solid #007bff; padding-left: 1rem; margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>API Documentation</h1>
+        <p>Welcome to the official documentation for the Intelligent Screenshot API. Our API is designed to be simple, predictable, and easy to use.</p>
+
+        <hr>
+
+        <h2>Authentication</h2>
+        <p>All API requests must be authenticated. You must include your unique API key in the request headers.</p>
+        <p>Header Name: <code>X-API-Key</code></p>
+        <p>You can get your key by signing up on our <a href="/">homepage</a>.</p>
+
+        <hr>
+
+        <h2>Endpoints</h2>
+
+        <div class="endpoint">
+            <h3>Create User</h3>
+            <p><code>POST /create_user</code></p>
+            <p>This endpoint creates a new user and returns a unique API key. You only need to do this once.</p>
+            <h4>Request Body (JSON):</h4>
+            <code>
+{
+  "email": "your.email@example.com"
+}
+            </code>
+            <h4>Success Response (JSON):</h4>
+            <code>
+{
+  "email": "your.email@example.com",
+  "api_key": "YOUR_UNIQUE_API_KEY"
+}
+            </code>
+        </div>
+
+        <div class="endpoint">
+            <h3>Request a Screenshot</h3>
+            <p><code>POST /screenshot</code></p>
+            <p>This is the main endpoint for requesting a screenshot. Remember to include your API key in the `X-API-Key` header.</p>
+            <h4>Request Body (JSON):</h4>
+            <code>
+{
+  "url": "https://www.google.com"
+}
+            </code>
+            <h4>Success Response (JSON):</h4>
+            <code>
+{
+  "status": "success",
+  "output": "..."
+}
+            </code>
+        </div>
+
+    </div>
+
+</body>
+</html>

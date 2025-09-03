@@ -12,8 +12,7 @@ from database import SessionLocal, engine
 # Create the database tables
 models.Base.metadata.create_all(bind=engine)
 
-# --- NEW: Set up the template engine ---
-# This tells FastAPI to look for HTML files in a folder named "templates"
+# Set up the template engine
 templates = Jinja2Templates(directory="templates")
 
 app = FastAPI()
@@ -42,10 +41,15 @@ class UserCreate(BaseModel):
 
 # --- API Endpoints ---
 
-# --- NEW: Endpoint to serve the HTML homepage ---
+# Endpoint to serve the HTML homepage
 @app.get("/")
 def read_homepage(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+# --- NEW: Endpoint to serve the HTML documentation page ---
+@app.get("/docs")
+def read_docs(request: Request):
+    return templates.TemplateResponse("docs.html", {"request": request})
 
 @app.post("/screenshot", dependencies=[Depends(get_current_user)])
 def take_screenshot(request: ScreenshotRequest):
