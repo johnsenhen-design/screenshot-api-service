@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing</title>
+    <style>
+    {% raw %}
+        body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 960px; margin: 40px auto; padding: 0 20px; }}
+        header {{ border-bottom: 1px solid #ddd; padding-bottom: 20px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }}
+        nav a {{ text-decoration: none; color: #007bff; font-weight: 500; margin-left: 15px; }}
+        h1, h2, h3 {{ text-align: center; color: #111; }}
+        .subheading {{ text-align: center; color: #666; max-width: 450px; margin: -20px auto 40px auto;}}
+        .pricing-container {{ display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;}}
+        .tier {{ border: 1px solid #ddd; border-radius: 8px; padding: 20px; width: 280px; text-align: center; display: flex; flex-direction: column; justify-content: space-between;}}
+        .tier h3 {{ font-size: 1.5em; margin-top: 0; }}
+        .tier .price {{ font-size: 2em; font-weight: bold; margin: 10px 0; }}
+        .tier ul {{ list-style-type: none; padding: 0; margin: 20px 0; text-align: left;}}
+        .tier ul li {{ padding: 8px 0; border-bottom: 1px solid #eee; }}
+        .tier button {{ background-color: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 20px;}}
+        .tier button:hover {{ background-color: #0056b3; }}
+    {% endraw %}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Our Pricing</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/docs">API Documentation</a>
+        </nav>
+    </header>
+
+    <p class="subheading">
+        Our pricing is simple: you only pay for what you use. Capturing a long webpage that requires multiple scrolls consumes more server resources. To reflect this, the credit cost for a screenshot is directly proportional to the number of scrolls performed.
+    </p>
+
+    <h2>Monthly Subscriptions</h2>
+    <div class="pricing-container">
+        <div class="tier">
+            <div>
+                <h3>Free</h3>
+                <div class="price">$0<span style="font-size: 0.5em; color: #666;">/mo</span></div>
+                <ul>
+                    <li>&#10003; 100 Credits / Month</li>
+                    <li>&#10003; Up to 4 Scrolls</li>
+                    <li>&#10003; Community Support</li>
+                </ul>
+            </div>
+            <button>Get Started</button>
+        </div>
+        <div class="tier">
+            <div>
+                <h3>Pro</h3>
+                <div class="price">$15<span style="font-size: 0.5em; color: #666;">/mo</span></div>
+                <ul>
+                    <li>&#10003; 5,000 Credits / Month</li>
+                    <li>&#10003; Up to 7 Scrolls</li>
+                    <li>&#10003; Email Support</li>
+                </ul>
+            </div>
+            <button>Upgrade</button>
+        </div>
+        <div class="tier">
+            <div>
+                <h3>Enterprise</h3>
+                <div class="price">Contact Us</div>
+                <ul>
+                    <li>&#10003; Custom Volume</li>
+                    <li>&#10003; Up to 10+ Scrolls</li>
+                    <li>&#10003; Dedicated Support</li>
+                </ul>
+            </div>
+            <button>Contact Sales</button>
+        </div>
+    </div>
+
+    <h2>Pay-As-You-Go Credit Packs</h2>
+    <div class="pricing-container">
+        <div class="tier">
+            <h3>Starter Pack</h3>
+            <div class="price">$5</div>
+            <ul>
+                <li>&#10003; 1,000 Credits</li>
+                <li>&#10003; Credits Never Expire</li>
+            </ul>
+            <button>Buy Credits</button>
+        </div>
+        <div class="tier">
+            <h3>Developer Pack</h3>
+            <div class="price">$20</div>
+            <ul>
+                <li>&#10003; 5,000 Credits</li>
+                <li>&#10003; Credits Never Expire</li>
+            </ul>
+            <button>Buy Credits</button>
+        </div>
+    </div>
+
+</body>
+</html>
