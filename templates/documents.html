@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <style>
+    {% raw %}
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 960px; margin: 15px auto; padding: 0 20px; }
+        header { border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
+        nav a { text-decoration: none; color: #007bff; font-weight: 500; margin-left: 15px; }
+        h1, h2, h3 { color: #111; }
+        h1 { text-align: center; margin-bottom: 5px; }
+        .docs-section { margin-bottom: 40px; }
+        code { background-color: #e9ecef; padding: 3px 6px; border-radius: 4px; font-family: "Courier New", Courier, monospace; word-wrap: break-word; }
+        pre { background-color: #2d2d2d; color: #f8f8f2; padding: 15px; border-radius: 8px; overflow-x: auto; }
+        .endpoint { border: 1px solid #ddd; border-radius: 8px; padding: 10px 15px; margin-bottom: 10px; font-weight: bold; }
+        .endpoint-method { background-color: #007bff; color: white; padding: 3px 8px; border-radius: 4px; margin-right: 10px; font-size: 0.9em;}
+    {% endraw %}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>API Documentation</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/pricing">Pricing</a>
+            <a href="/dashboard">Dashboard</a>
+        </nav>
+    </header>
+
+    <div class="docs-section">
+        <h2>Authentication</h2>
+        <p>To use our API, you must include your unique API key in the header of every request. You can find your key on your <a href="/dashboard">Dashboard</a>.</p>
+        <p>Include the header as follows:</p>
+        <code>X-API-Key: YOUR_API_KEY_HERE</code>
+    </div>
+
+    <div class="docs-section">
+        <h2>Endpoints</h2>
+        
+        <h3>Create Screenshot</h3>
+        <div class="endpoint"><span class="endpoint-method">POST</span> /screenshot</div>
+        <p>This is the primary endpoint for creating a new screenshot. The request body must be a JSON object containing the URL to capture.</p>
+        
+        <h4>Example Request Body:</h4>
+        <pre><code>{
+    "url": "https://www.google.com"
+}</code></pre>
+
+        <h4>Example Response (Success):</h4>
+        <pre><code>{
+    "status": "success",
+    "output": "Success! Screenshot saved as 'www_google_com.png'..."
+}</code></pre>
+    </div>
+
+</body>
+</html>

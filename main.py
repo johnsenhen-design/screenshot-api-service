@@ -1,4 +1,3 @@
-
 import subprocess
 import secrets
 from fastapi import FastAPI, Depends, HTTPException, status, Header, Request
@@ -45,9 +44,9 @@ def read_homepage(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 # Endpoint to serve the HTML documentation page
-@app.get("/docs")
-def read_docs(request: Request):
-    return templates.TemplateResponse("docs.html", {"request": request})
+@app.get("/documents")
+def read_documents(request: Request):
+    return templates.TemplateResponse("documents.html", {"request": request})
 
 # Endpoint to serve the dashboard page
 @app.get("/dashboard")
@@ -64,7 +63,7 @@ def take_screenshot(request: ScreenshotRequest):
     python_executable = "/home/johnsenhen/ai-design-agent/venv/bin/python3"
     script_path = "/home/johnsenhen/ai-design-agent/screenshot_engine.py"
     command = [python_executable, script_path, request.url]
-
+    
     try:
         result = subprocess.run(command, capture_output=True, text=True, check=True, timeout=120)
         return {"status": "success", "output": result.stdout}
@@ -76,7 +75,7 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     # NOTE: The line to create database tables was moved from the top of this file.
     # It should be run once during initial setup, not every time the server starts.
     models.Base.metadata.create_all(bind=engine)
-
+    
     new_api_key = secrets.token_urlsafe(32)
     db_user = models.User(email=user.email, api_key=new_api_key)
     db.add(db_user)
