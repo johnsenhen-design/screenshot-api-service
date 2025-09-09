@@ -72,6 +72,12 @@ def take_screenshot(request: ScreenshotRequest, user: models.User = Depends(get_
 
 @app.post("/create_user")
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
+    # --- NEW: Check if user already exists ---
+    db_user = crud.get_user_by_email(db, email=user.email)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    
+    # If user doesn't exist, create them
     new_api_key = secrets.token_urlsafe(32)
     db_user = models.User(email=user.email, api_key=new_api_key)
     db.add(db_user)
